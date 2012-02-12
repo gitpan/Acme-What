@@ -5,7 +5,7 @@ use strict;
 
 BEGIN {
 	$Acme::What::AUTHORITY = 'cpan:TOBYINK';
-	$Acme::What::VERSION   = '0.001';
+	$Acme::What::VERSION   = '0.002';
 }
 
 use Carp qw/croak/;

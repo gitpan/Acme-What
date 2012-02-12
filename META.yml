@@ -4,6 +4,7 @@ author:
   - 'Toby Inkster <tobyink@cpan.org>'
 build_requires:
   ExtUtils::MakeMaker: 6.42
+  Test::Exception: 0
   Test::More: 0.61
 configure_requires:
   ExtUtils::MakeMaker: 6.42
@@ -18,6 +19,7 @@ module_name: Acme::What
 name: Acme-What
 no_index:
   directory:
+    - examples
     - inc
     - t
     - xt
@@ -32,4 +34,4 @@ resources:
   bugtracker: http://rt.cpan.org/Dist/Display.html?Queue=Acme-What
   homepage: https://metacpan.org/release/Acme-What
   license: http://dev.perl.org/licenses/
-version: 0.001
+version: 0.002
