@@ -2,36 +2,41 @@
 abstract: 'the f**k?'
 author:
   - 'Toby Inkster <tobyink@cpan.org>'
+  - 'TOBYINK <tobyink@cpan.org>'
 build_requires:
-  ExtUtils::MakeMaker: 6.42
-  Test::Exception: 0
-  Test::More: 0.61
+  Test::Exception: '0'
+  Test::More: '0.61'
 configure_requires:
-  ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 1.02'
+  ExtUtils::MakeMaker: '6.17'
+dynamic_config: 0
+generated_by: 'Moose::Meta::Class::__ANON__::SERIAL::7 version , CPAN::Meta::Converter version 2.140640'
 keywords: []
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
-module_name: Acme::What
+  version: '1.4'
 name: Acme-What
 no_index:
   directory:
+    - eg
     - examples
     - inc
     - t
     - xt
+optional_features: {}
+provides:
+  Acme::What:
+    file: lib/Acme/What.pm
+    version: '0.003'
 requires:
-  Carp: 0
-  Devel::Declare: 0
-  Sub::Name: 0
-  parent: 0
-  perl: 5.10.0
-  strict: 0
+  Carp: '0'
+  Devel::Declare: '0'
+  Sub::Name: '0'
+  parent: '0'
+  strict: '0'
 resources:
+  X_identifier: http://purl.org/NET/cpan-uri/dist/Acme-What/project
   bugtracker: http://rt.cpan.org/Dist/Display.html?Queue=Acme-What
   homepage: https://metacpan.org/release/Acme-What
   license: http://dev.perl.org/licenses/
-version: 0.002
+version: '0.003'

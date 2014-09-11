@@ -4,11 +4,16 @@ Acme-What
 Created:      2012-02-06
 Home page:    <https://metacpan.org/release/Acme-What>
 Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Acme-What>
+Maintainer:   Toby Inkster <tobyink@cpan.org>
 
-0.002  2012-02-12  # Happy Birthday Isabel!
+0.003	2014-09-11
 
- - (Packaging) Declare testing dependency on Test::Exception.
+ [ Packaging ]
+ - Switch to Dist::Inkt.
 
-0.001  2012-02-06  # Initial release
+0.002	2012-02-12	Happy Birthday Isabel!
 
+ [ Packaging ]
+ - Declare testing dependency on Test::Exception.
 
+0.001	2012-02-06	Initial release
