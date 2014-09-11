@@ -1,18 +1,18 @@
-package Acme::What;
-
 use 5.010;
 use strict;
+use warnings;
+
+package Acme::What;
 
 BEGIN {
 	$Acme::What::AUTHORITY = 'cpan:TOBYINK';
-	$Acme::What::VERSION   = '0.003';
+	$Acme::What::VERSION   = '0.004';
 }
 
-use Carp qw/croak/;
 use Devel::Declare;
-use Sub::Name qw/subname/;
+use Sub::Util qw/set_subname/;
 
-use parent qw/Devel::Declare::Context::Simple/;
+use base qw/Devel::Declare::Context::Simple/;
 
 sub import
 {
@@ -30,7 +30,7 @@ sub import
 			$caller,
 			{ what => { const => sub { $self->_parser(@_) } } }
 		);
-		*$export = subname $export => sub ($) { $self->_do(@_) };
+		*$export = set_subname($export => sub ($) { $self->_do(@_) });
 	}
 	
 	$^H{(__PACKAGE__)} = $method =~ m{^\+(.+)$}
@@ -84,8 +84,10 @@ sub _do
 	
 	my $meth = $caller[10]{ (__PACKAGE__) };
 	
-	croak "Acme::What disabled"
-		unless defined $meth;
+	if (not defined $meth) {
+		require Carp;
+		Carp::croak("Acme::What disabled");
+	}
 	
 	return $meth->(@args);
 }
@@ -155,7 +157,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 MAY I?
 
-This software is copyright (c) 2012 by Toby Inkster.
+This software is copyright (c) 2012, 2014 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

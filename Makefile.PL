@@ -10,7 +10,7 @@ my $meta = {
                         "TOBYINK <tobyink\@cpan.org>",
                       ],
   "dynamic_config" => 0,
-  "generated_by"   => "Moose::Meta::Class::__ANON__::SERIAL::7 version , CPAN::Meta::Converter version 2.140640",
+  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.016, CPAN::Meta::Converter version 2.140640",
   "keywords"       => [],
   "license"        => ["perl_5"],
   "meta-spec"      => {
@@ -21,19 +21,11 @@ my $meta = {
   "no_index"       => { directory => ["eg", "examples", "inc", "t", "xt"] },
   "prereqs"        => {
                         configure => { requires => { "ExtUtils::MakeMaker" => 6.17 } },
-                        runtime => {
-                          requires => {
-                            "Carp"           => 0,
-                            "Devel::Declare" => 0,
-                            "parent"         => 0,
-                            "strict"         => 0,
-                            "Sub::Name"      => 0,
-                          },
-                        },
+                        runtime => { requires => { "Devel::Declare" => 0, "Sub::Util" => 0 } },
                         test => { requires => { "Test::Exception" => 0, "Test::More" => 0.61 } },
                       },
   "provides"       => {
-                        "Acme::What" => { file => "lib/Acme/What.pm", version => 0.003 },
+                        "Acme::What" => { file => "lib/Acme/What.pm", version => 0.004 },
                       },
   "release_status" => "stable",
   "resources"      => {
@@ -42,7 +34,7 @@ my $meta = {
                         license      => ["http://dev.perl.org/licenses/"],
                         X_identifier => "http://purl.org/NET/cpan-uri/dist/Acme-What/project",
                       },
-  "version"        => 0.003,
+  "version"        => 0.004,
 };
 
 my %dynamic_config;

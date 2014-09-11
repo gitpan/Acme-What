@@ -5,7 +5,7 @@
       "TOBYINK <tobyink@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Moose::Meta::Class::__ANON__::SERIAL::7 version , CPAN::Meta::Converter version 2.140640",
+   "generated_by" : "Dist::Inkt::Profile::TOBYINK version 0.016, CPAN::Meta::Converter version 2.140640",
    "keywords" : [],
    "license" : [
       "perl_5"
@@ -33,11 +33,8 @@
       },
       "runtime" : {
          "requires" : {
-            "Carp" : "0",
             "Devel::Declare" : "0",
-            "Sub::Name" : "0",
-            "parent" : "0",
-            "strict" : "0"
+            "Sub::Util" : "0"
          }
       },
       "test" : {
@@ -50,7 +47,7 @@
    "provides" : {
       "Acme::What" : {
          "file" : "lib/Acme/What.pm",
-         "version" : "0.003"
+         "version" : "0.004"
       }
    },
    "release_status" : "stable",
@@ -64,5 +61,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.003"
+   "version" : "0.004"
 }

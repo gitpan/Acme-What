@@ -1,39 +1,37 @@
 use 5.010;
-use Acme::UseStrict;
+use strict;
+use warnings;
+
 use Acme::What;
-use Web::Magic;
+use URI::FromHash qw(uri);
+use XML::LibXML 1.70;
 
 sub WHAT
 {
-	'use strict';
 	my @args = $_[0] =~ m{\w+}g;
 	
 	my $woeid = pop @args;
-	$woeid = do
-		{
-			warn "If you want to know the weather $woeid, "
-				. "define the YAHOO_WOEID environment variable. "
-				. "Assuming you live where TOBYINK lives"
-				unless exists $ENV{YAHOO_WOEID}
-				    && defined $ENV{YAHOO_WOEID};
-			($ENV{YAHOO_WOEID} // 26191)
-		}
-		if $woeid =~ m{^(outside|here)$}i;
+	$woeid = do {
+		warn "If you want to know the weather $woeid, "
+			. "define the YAHOO_WOEID environment variable. "
+			. "Assuming you live where TOBYINK lives"
+			unless exists $ENV{YAHOO_WOEID}
+				 && defined $ENV{YAHOO_WOEID};
+		($ENV{YAHOO_WOEID} // 26191)
+	} if $woeid =~ m{^(outside|here)$}i;
 	
-	my $unit = $^F==1 ? 'F' : 'C';
-	# if $^F == 2 then detect unit by locale. Belize and US use Fahrenheit.
-	if ($^F > 1 and $ENV{LC_MEASUREMENT} =~ /^.._(US|BZ)/i)
-	{
-		$unit = 'F';
-	}
+	my $unit = ($ENV{LC_MEASUREMENT}//"" =~ /^.._(US|BZ)/i) ? "F" : "C";
 	
-	my %opts = (
-		'w'  => $woeid, 
-		'u'  => lc $unit,
-		);
+	my $xml_location = uri(
+		scheme => 'http',
+		host   => 'weather.yahooapis.com',
+		path   => '/forecastrss',
+		query  => { w => $woeid, u => lc $unit },
+		query_separator => '&',  ## URI::FromHash has stupid defaults
+	);
 	
-	my ($temperature) = Web::Magic
-		-> new(q<http://weather.yahooapis.com/forecastrss>, %opts)
+	my ($temperature) = XML::LibXML
+		-> load_xml(location => $xml_location)
 		-> findnodes('//yweather:condition/@temp')
 		-> map(sub { $_->value });	
 	
