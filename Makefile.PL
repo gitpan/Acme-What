@@ -10,7 +10,7 @@ my $meta = {
                         "TOBYINK <tobyink\@cpan.org>",
                       ],
   "dynamic_config" => 0,
-  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.016, CPAN::Meta::Converter version 2.140640",
+  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.021, CPAN::Meta::Converter version 2.140640",
   "keywords"       => [],
   "license"        => ["perl_5"],
   "meta-spec"      => {
@@ -21,20 +21,27 @@ my $meta = {
   "no_index"       => { directory => ["eg", "examples", "inc", "t", "xt"] },
   "prereqs"        => {
                         configure => { requires => { "ExtUtils::MakeMaker" => 6.17 } },
-                        runtime => { requires => { "Devel::Declare" => 0, "Sub::Util" => 0 } },
+                        runtime => {
+                          requires => { "Devel::Declare" => 0, "perl" => "5.010", "Sub::Util" => 0 },
+                        },
                         test => { requires => { "Test::Exception" => 0, "Test::More" => 0.61 } },
                       },
   "provides"       => {
-                        "Acme::What" => { file => "lib/Acme/What.pm", version => 0.004 },
+                        "Acme::What" => { file => "lib/Acme/What.pm", version => 0.005 },
                       },
   "release_status" => "stable",
   "resources"      => {
                         bugtracker   => { web => "http://rt.cpan.org/Dist/Display.html?Queue=Acme-What" },
                         homepage     => "https://metacpan.org/release/Acme-What",
                         license      => ["http://dev.perl.org/licenses/"],
-                        X_identifier => "http://purl.org/NET/cpan-uri/dist/Acme-What/project",
+                        repository   => {
+                                          type => "git",
+                                          url  => "git://github.com/tobyink/p5-acme-what.git",
+                                          web  => "https://github.com/tobyink/p5-acme-what",
+                                        },
+                        x_identifier => "http://purl.org/NET/cpan-uri/dist/Acme-What/project",
                       },
-  "version"        => 0.004,
+  "version"        => 0.005,
 };
 
 my %dynamic_config;

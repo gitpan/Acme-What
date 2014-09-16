@@ -6,7 +6,7 @@ package Acme::What;
 
 BEGIN {
 	$Acme::What::AUTHORITY = 'cpan:TOBYINK';
-	$Acme::What::VERSION   = '0.004';
+	$Acme::What::VERSION   = '0.005';
 }
 
 use Devel::Declare;
@@ -79,7 +79,7 @@ sub _quote
 sub _do
 {
 	no strict 'refs';
-	my ($self, @args) = @_;	
+	my ($self, @args) = @_;
 	my @caller = caller(1);
 	
 	my $meth = $caller[10]{ (__PACKAGE__) };
